@@ -129,6 +129,30 @@ chess.exe/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.exe.dir/build.make CMakeFiles/chess.exe.dir/build
 .PHONY : chess.exe/fast
 
+src/attacks.o: src/attacks.cpp.o
+.PHONY : src/attacks.o
+
+# target to build an object file
+src/attacks.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.exe.dir/build.make CMakeFiles/chess.exe.dir/src/attacks.cpp.o
+.PHONY : src/attacks.cpp.o
+
+src/attacks.i: src/attacks.cpp.i
+.PHONY : src/attacks.i
+
+# target to preprocess a source file
+src/attacks.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.exe.dir/build.make CMakeFiles/chess.exe.dir/src/attacks.cpp.i
+.PHONY : src/attacks.cpp.i
+
+src/attacks.s: src/attacks.cpp.s
+.PHONY : src/attacks.s
+
+# target to generate assembly for a file
+src/attacks.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chess.exe.dir/build.make CMakeFiles/chess.exe.dir/src/attacks.cpp.s
+.PHONY : src/attacks.cpp.s
+
 src/bitboard.o: src/bitboard.cpp.o
 .PHONY : src/bitboard.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... chess.exe"
+	@echo "... src/attacks.o"
+	@echo "... src/attacks.i"
+	@echo "... src/attacks.s"
 	@echo "... src/bitboard.o"
 	@echo "... src/bitboard.i"
 	@echo "... src/bitboard.s"

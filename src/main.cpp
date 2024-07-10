@@ -1,18 +1,10 @@
 #include "../include/bitboard.hpp"
+#include "../include/attacks.hpp"
+#include "../include/types.hpp"
 #include <iostream>
 
 int main() {
-U64 bitboard = 0ULL;
-
-set_bit(bitboard,a1);
-print_bitboard(bitboard);
-
-printf("\n\n\n");
-pop_bit(bitboard, a1);
-print_bitboard(bitboard);
-printf("\n\n\n");
-pop_bit(bitboard, a1);
-print_bitboard(bitboard);
+    mask_pawn_attacks(e4,black);
 
 return 0;
 }

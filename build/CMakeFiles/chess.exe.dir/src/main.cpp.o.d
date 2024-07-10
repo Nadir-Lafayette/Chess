@@ -1,6 +1,8 @@
 CMakeFiles/chess.exe.dir/src/main.cpp.o: \
   /Users/nick/Developer/chess/src/main.cpp \
   /Users/nick/Developer/chess/src/../include/bitboard.hpp \
+  /Users/nick/Developer/chess/src/../include/types.hpp \
+  /Users/nick/Developer/chess/src/../include/attacks.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__assert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__config \

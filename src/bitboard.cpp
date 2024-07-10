@@ -13,11 +13,11 @@
 */
 void print_bitboard(U64 bitboard){
     //Loop over board rank
-    
-    for(int rank = 0; rank < 8; rank++){
+    for(int rank = 0; rank < 8; rank++)
+    {
         //Loop over board file
-        
-        for(int file = 0; file < 8;file++){
+        for(int file = 0; file < 8;file++)
+        {
             int square = rank * 8 + file;
             if (!file)
             {
@@ -33,5 +33,8 @@ void print_bitboard(U64 bitboard){
     //Print the letters of the board
     printf("    a  b  c  d  e  f  g  h \n");
 
-    
+    //unique bit board representation
+    printf("\n       bitboard %llud \n", bitboard);
 }
+
+

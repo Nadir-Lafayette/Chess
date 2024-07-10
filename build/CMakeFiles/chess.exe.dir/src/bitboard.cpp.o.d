@@ -35,4 +35,5 @@ CMakeFiles/chess.exe.dir/src/bitboard.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_ctermid.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_off_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_ssize_t.h \
-  /Users/nick/Developer/chess/src/../include/bitboard.hpp
+  /Users/nick/Developer/chess/src/../include/bitboard.hpp \
+  /Users/nick/Developer/chess/src/../include/types.hpp
