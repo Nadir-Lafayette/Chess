@@ -4,7 +4,8 @@
 #include <iostream>
 
 int main() {
-    print_bitboard(mask_knight_attacks(a4));
+   // print_bitboard(mask_king_attacks(a1));
+   attack_table_gen();
 
     return 0;
 }

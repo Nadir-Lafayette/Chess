@@ -107,6 +107,9 @@ U64 pawn_attacks[2][64];
 // Knight attack table
 U64 knight_attacks[64];
 
+//King attack table
+U64 king_attacks[64];
+
 void attack_table_gen()
 {
 
@@ -115,10 +118,11 @@ void attack_table_gen()
         pawn_attacks[white][sqaure] = mask_pawn_attacks(sqaure, white);
         pawn_attacks[black][sqaure] = mask_pawn_attacks(sqaure, black);
         knight_attacks[sqaure] = mask_knight_attacks(sqaure);
+        king_attacks[sqaure] = mask_king_attacks(sqaure);
     }
     for (int i = 0; i < 64; i++)
     {
-        print_bitboard(knight_attacks[i]);
+        print_bitboard(king_attacks[i]);
     }
 }
 
@@ -164,6 +168,33 @@ U64 mask_knight_attacks(int square){
     attacks |= (bitboard << 15) & not_h_file;
     attacks |= (bitboard << 10) & not_ab_file;
     attacks |= (bitboard << 6) & not_gh_file;
+
+    return attacks;
+}
+U64 mask_king_attacks(int square){
+    U64 bitboard = 0ULL;
+    U64 attacks = 0ULL;
+    set_bit(bitboard, square);
+
+    //north
+    attacks |= (bitboard >> 8);
+    //south
+    attacks |= (bitboard << 8);
+
+    //east
+    attacks |= (bitboard << 1) & not_a_file;
+
+    //west
+    attacks |= (bitboard >> 1) & not_h_file;
+
+    //going North west
+    attacks |= ((bitboard << 7) & not_h_file);
+    //going north east
+    attacks |= ((bitboard << 9) & not_a_file);
+    //going south west
+    attacks |= ((bitboard >> 7) & not_a_file);
+    //going south east
+    attacks |= ((bitboard >> 9) & not_h_file);
 
     return attacks;
 }
