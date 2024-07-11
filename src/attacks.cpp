@@ -50,6 +50,7 @@ const U64 not_b_file = 18302063728033398269ULL;
 */
 const U64 not_g_file = 13816973012072644543ULL;
 /*
+
     ------- NOT H FILE ---------
     8  1  1  1  1  1  1  1  0
     7  1  1  1  1  1  1  1  0
@@ -100,8 +101,30 @@ const U64 not_gh_file = 4557430888798830399ULL;
 
 
 
- // Pawn attck area
+ // Pawn attck table Needs two be 2 for white and black as pawns act diffrently.
 U64 pawn_attacks[2][64];
+
+// Knight attack table
+U64 knight_attacks[64];
+
+void attack_table_gen()
+{
+
+    for (int sqaure = 0; sqaure < 64; sqaure++)
+    {
+        pawn_attacks[white][sqaure] = mask_pawn_attacks(sqaure, white);
+        pawn_attacks[black][sqaure] = mask_pawn_attacks(sqaure, black);
+        knight_attacks[sqaure] = mask_knight_attacks(sqaure);
+    }
+    for (int i = 0; i < 64; i++)
+    {
+        print_bitboard(knight_attacks[i]);
+    }
+}
+
+/*
+This mask make it so we can makeall possible attacks for the pawns.
+*/
 U64 mask_pawn_attacks(int square, int side)
 {
 
@@ -123,17 +146,24 @@ U64 mask_pawn_attacks(int square, int side)
     return attacks;
 }
 
-void attack_table_gen()
-{
+/*
+This mask make it so we can makeall possible attacks for the knights.
+knight offset = 6 ,10, 15,17
+*/
+U64 mask_knight_attacks(int square){
+    U64 bitboard = 0ULL;
+    U64 attacks = 0ULL;
+    set_bit(bitboard, square);
+    attacks |= (bitboard >> 17) & not_h_file;
+    attacks|= (bitboard >> 15) & not_a_file;
+    attacks |= (bitboard >> 10) & not_gh_file;
+    attacks |= (bitboard >> 6) & not_ab_file;
 
-    for (int sqaure = 0; sqaure < 8; sqaure++)
-    {
-        pawn_attacks[white][sqaure] = mask_pawn_attacks(sqaure,white);
-        pawn_attacks[black][sqaure] = mask_pawn_attacks(sqaure, black);
-    }
-    // for (int i = 0; i < 64; i++)
-    // {
-    //     print_bitboard(pawn_attacks[white][i]);
-    // }
-    
+
+    attacks |= (bitboard << 17) & not_a_file;
+    attacks |= (bitboard << 15) & not_h_file;
+    attacks |= (bitboard << 10) & not_ab_file;
+    attacks |= (bitboard << 6) & not_gh_file;
+
+    return attacks;
 }

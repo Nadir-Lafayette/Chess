@@ -16,4 +16,12 @@ enum {
     black,
     none =2
 };
+enum{
+    pawn = 0,
+    knight,
+    bishoop,
+    rook,
+    queen,
+    king
+};
 #endif

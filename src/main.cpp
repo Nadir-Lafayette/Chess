@@ -4,7 +4,7 @@
 #include <iostream>
 
 int main() {
-    mask_pawn_attacks(e4,black);
+    print_bitboard(mask_knight_attacks(a4));
 
-return 0;
+    return 0;
 }
