@@ -19,7 +19,7 @@ enum {
 enum{
     pawn = 0,
     knight,
-    bishoop,
+    bishop,
     rook,
     queen,
     king
