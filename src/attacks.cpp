@@ -272,3 +272,102 @@ U64 mask_rook_attacks(int square)
 
     return attacks;
 }
+
+U64 bishop_attacks_on_the_fly(int square,U64 block)
+{
+    U64 bitboard = 0ULL;
+    U64 attacks = 0ULL;
+    set_bit(bitboard, square);
+    int rank;
+    int file;
+    int target_rank = square / 8;
+    int target_file = square % 8;
+    // Going southeast
+    for (rank = target_rank + 1, file = target_file + 1; (rank <= 7 && file <= 7); rank++, file++)
+    {
+        attacks |= (1ULL << (rank * 8 + file));
+        if ((1ULL << (rank * 8 + file)) & block)
+        { 
+            break;
+        }
+    }
+    // going north east
+    for (rank = target_rank - 1, file = target_file + 1; (rank >= 0 && file <= 7); rank--, file++)
+    {
+        attacks |= (1ULL << (rank * 8 + file));
+        if ((1ULL << (rank * 8 + file)) & block)
+        {
+            break;
+        }
+    }
+    // going south west
+    for (rank = target_rank + 1, file = target_file - 1; (rank <= 7 && file >= 0); rank++, file--)
+    {
+        attacks |= (1ULL << (rank * 8 + file));
+        if ((1ULL << (rank * 8 + file)) & block)
+        {
+            break;
+        }
+    }
+    // going northwest
+    for (rank = target_rank - 1, file = target_file - 1; (rank >= 0 && file >= 0); rank--, file--)
+    {
+        attacks |= (1ULL << (rank * 8 + file));
+        if ((1ULL << (rank * 8 + file)) & block)
+        {
+            break;
+        }
+    }
+    return attacks;
+}
+
+U64 rook_attacks_on_the_fly(int square,U64 block)
+{
+    U64 bitboard = 0ULL;
+    U64 attacks = 0ULL;
+    set_bit(bitboard, square);
+    int rank;
+    int file;
+    int target_rank = square / 8;
+    int target_file = square % 8;
+    // Going southeast
+    // south
+    for (rank = target_rank + 1; rank <= 7; rank++)
+    {
+        attacks |= (1Ull << (rank * 8 + target_file));
+        if ((1ULL << (rank * 8 + target_file)) & block)
+        {
+            break;
+        }
+    }
+
+    // north
+    for (rank = target_rank - 1; rank >= 0; rank--)
+    {
+        attacks |= (1Ull << (rank * 8 + target_file));
+        if ((1ULL << (rank * 8 + target_file)) & block)
+        {
+            break;
+        }
+    }
+    // east
+    for (file = target_file + 1; file <= 7; file++)
+    {
+        attacks |= (1Ull << (target_rank * 8 + file));
+        if (1Ull << (target_rank * 8 + file)& block)
+        {
+            break;
+        }
+    }
+    // west
+    for (file = target_file - 1; file >= 0; file--)
+    {
+        attacks |= (1Ull << (target_rank * 8 + file));
+        if (1Ull << (target_rank * 8 + file) & block)
+        {
+            break;
+        }
+    }
+
+    return attacks;
+}
